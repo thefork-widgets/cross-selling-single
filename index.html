@@ -1,0 +1,97 @@
+
+<div id= "widgetContainer">
+  <p>Si el restaurante está completo haz tu reserva en otro de nuestros locales:</p>
+  <div class="">
+    <div class="">
+    </div>
+    <div class="">
+        <!-- Format /module/671293-81c1c#/4274475/pdh to keep the selected day in cros-selling -->
+        <ul>
+          <li><a href="javascript:openURLwidget('/module/671293-81c1c#/4274475/pdh')"><img class="restaurantLogo" src="http://www.tuktukstreetfood.es/img/logo-2020.png"></a></li>
+          <li><a href="javascript:openURLwidget('/module/671293-81c1c#/4274475/pdh')"><img class="restaurantLogo" src="http://www.tuktukstreetfood.es/img/logo-2020.png"></a></li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Cros-selling scripts -->
+<script type="text/javascript">
+
+    var dataBooking = "";
+
+    function openURLwidget(originalHash){
+
+        $(document).ready(function(){
+          if(window.location.href.search( 'customer' )==-1){
+            dataBooking = window.location.hash.split("pdh", 2);
+            console.log("var dataBooking: " + dataBooking[1]);
+          }
+        });
+        // Available languages
+        if(window.location.href.search( 'es_ES' )!=-1){
+            var lang= "es_ES";
+        }else{
+            var lang= "en_GB";
+        }
+
+        URLwidget = "https://module.lafourchette.com/"+ lang + originalHash;
+        console.log("URLwidget + dataBooking: " + URLwidget+dataBooking[1]);
+        window.open(URLwidget+dataBooking[1], "_self");
+
+    }
+
+</script>
+
+<script type="text/javascript">
+
+    if(window.location.href.search( 'customer' )==-1 && window.location.href.search( 'payment' )==-1){
+        console.log("widgetContainer");
+        $('#widgetContainer').show();
+    }else{
+        $('#widgetContainer').hide();
+    }
+
+</script>
+<!--/ Cros-selling scripts -->
+
+
+<!-- Cros-selling styles -->
+<style type="text/css">
+
+#widgetContainer{
+  margin-bottom: 20px;
+  overflow: visible;
+  text-align: justify; 
+  min-width: 320px; 
+  max-width: 520px; 
+  padding-bottom: 10px; margin: 0 auto; 
+
+}
+
+#widgetContainer p{
+  /*padding-bottom: 20px;*/
+  font-weight: bold;
+  text-align: justify;
+}
+
+img.restaurantLogo{
+  width: 30%;
+  padding-bottom: 25px;
+}
+
+#widgetContainer p.imgCenter{
+  text-align: center;
+}
+
+body{
+  font-family: Arial, Verdana;
+}
+
+#widgetContainer ul {
+  list-style: none;
+  text-align: center;
+  height: 25px;
+}
+
+</style>
+
